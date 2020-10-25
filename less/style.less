@@ -1,0 +1,325 @@
+// Fonts family
+@font-face {
+    font-family: 'Roboto_bold';
+    src: url('../fonts/Roboto-Bold.eot');
+    src: url('../fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Bold.woff2') format('woff2'),
+        url('../fonts/Roboto-Bold.woff') format('woff'),
+        url('../fonts/Roboto-Bold.ttf') format('truetype'),
+        url('../fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto_reg';
+    src: url('../fonts/Roboto-Regular.eot');
+    src: url('../fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Regular.woff2') format('woff2'),
+        url('../fonts/Roboto-Regular.woff') format('woff'),
+        url('../fonts/Roboto-Regular.ttf') format('truetype'),
+        url('../fonts/Roboto-Regular.svg#Roboto-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.reg() {
+    font-family: 'Roboto_reg', sans-serif;
+}
+.bold() {
+    font-family: 'Roboto_bold', sans-serif;
+}
+
+//   Colors
+@btn-color: #d7d202;
+@icons-color: #46b814;
+@text: #14101f;
+@danger: #ff0000;
+@bg-light: #f5f5f5;
+@light: #fff;
+@border-input: #dddddd;
+
+// Basic setting
+html {
+    font-size: 10px;    
+}
+body {
+    .reg();
+}
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+button, input, a {
+    &:focus {
+        outline: none;
+    }
+}
+p {
+    font-size: 1.5rem;
+}
+.button {
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    background-color: @btn-color;
+    color: #000;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    transition: all 0.5s;
+    &:hover {
+        cursor: pointer;
+        background-color: lighten(@btn-color, 15%);//Эффект при наведении
+        border: 1px solid #fffd00;
+    }
+}
+// Typography
+section {
+    padding: 10rem 0;
+}
+.section-header {
+    margin: 2rem 0 10rem;
+    .bold();
+    font-size: 3.6rem;
+    text-align: center;
+}
+
+// main
+.main {
+    padding: 3rem 0 5rem;
+    background: #fff url(../img/bg.jpg) center center no-repeat;
+    background-size: cover;
+    height: 800px;
+    width: 100%;
+    color: #ffffff;
+     &-content {
+        margin-top: 10rem;
+            
+        //Главный заголовок
+        h1 {
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+            .bold();
+            font-size: 5rem;
+            line-height: 1.45;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            animation-delay: 1.2s;
+        }
+        &-span {
+            font-size: 7rem;
+        }
+    }
+
+        //Подзаголовок
+        &-subtitle {
+            margin-bottom: 4rem;
+            font-size: 2.5rem;
+            animation-delay: 2.4s;
+        }
+        &-logo-img {
+            transition: 0.3s; /* Время поворота */
+            &:hover {
+                transform: rotate(720deg);
+            }       
+        }    
+        /*Двойное подчеркивание */
+    &-menu {
+         
+        ul {
+            margin: 1rem 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        li {
+            display:inline-block;
+            margin: 1.5rem;
+            text-transform: uppercase;
+        }
+        a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            padding: 1.2rem 0;
+            letter-spacing: 1px;
+            // .bold();
+        }
+        a.twolines {
+            width: 110px;
+            text-align: center;
+            text-decoration: none;
+            line-height: 2; /*задаём высоту строки*/
+            position:relative; /*Если убрать, линия будет на весь экран*/
+        }
+            /*значение before делает верхнее подчеркивание,значение after делает нижнее подчеркивание */
+        a.twolines::before, 
+        a.twolines::after {
+            background-color: #ffffff;
+            display: block;
+            /* display: inline-block; если поставить это значение, линия будет сверху */
+            content: "";
+            height: 2px;/*задаём высоту линии*/
+            width: 0%; /*задаём начальную ширину элемента (линии)*/
+            left:50%;/*Подчеркивание начинается с середины*/
+            position:absolute;
+            -webkit-transition: width .3s ease-in-out;
+            -moz--transition: width .3s ease-in-out;
+            transition: width .3s ease-in-out;/*плавное изменение ширины линии */
+            -webkit-transform:translateX(-50%);
+            -moz-transform:translateX(-50%);
+            transform:translateX(-50%);
+        }
+        a.twolines:hover::before,
+        a.twolines:focus::before {
+            width: 110%;
+        }
+        a.twolines:hover::after,
+        a.twolines:focus::after {
+            width: 110%;
+        }   
+        
+    }
+    &-slogan {
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        .bold();
+        font-size: 2rem;
+        line-height: 1.45;
+        text-transform: uppercase;
+        color: #fffd00;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+}
+.header {
+    height: 7rem;
+}
+.wrap {
+    &-block {  
+        vertical-align: middle; /*В этой ячейке позиционируем блок*/
+        text-align: center;/*Выравниваем кнопку по центру*/
+    }
+}
+
+/*Оформление секции с преимуществами*/ 
+.features {
+    &-block {
+        text-align: center;
+        h3 {
+            .bold();
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        p {
+            display: inline-block;
+            width: 90%;
+            font-size: 1.45rem;
+        }
+    }
+    &-img {
+        margin-bottom: 3rem;
+      img {
+        height: 12rem; /*У всех картинок будет одинаковая высота*/
+        display: block;
+        margin: 0 auto;
+      }  
+    }
+}
+.slick-active {
+    outline: none;
+}
+.arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 99;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+}
+.prev {
+    left: 0;
+    background: url(../img/left-arrow.png) center no-repeat;
+    background-size: 120%;
+}
+.next {
+    right: 0;
+    background: url(../img/right-arrow.png) center no-repeat;
+    background-size: 120%;
+}
+
+
+/*Схема работы*/
+.scheme {
+    background: #fff url(../img/shemes/scheme-bg.png) bottom right -10rem no-repeat;
+    padding-bottom: 0;
+    background-size: 65rem;
+    .section-header {
+        padding-bottom: 2rem;
+    }
+    &-block {
+        min-height: 30rem;
+        padding-bottom: 7rem;
+        h3 {
+            font-size: 2rem;
+            .bold();
+        }
+    }
+}
+
+@media (max-width: 1201px) {
+    .main {
+        background-position: top left;
+    }
+    .main-content {
+        margin-top: 3rem;
+    }
+    .main-title {
+        padding-bottom: 3rem;
+        text-align: center;
+    }
+    .main-slogan, .main-menu {
+        text-align: center;
+    }
+}
+
+@media (max-width: 991px) {
+    .main {
+        background-position: top left;
+    }
+    .main-content {
+        margin-top: 3rem;
+    }
+    .main-logo,
+    .main-menu {
+        text-align: center;
+        margin-top: .1rem;
+    }
+    .main-menu li {
+        margin: 1rem 1.5rem;
+    }
+    .main-slogan {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .main-title {
+        padding-bottom: .1rem;
+        text-align: center;
+    }
+}
+@media (max-width: 767px) {
+    .main {
+        background-position: top left;
+    }
+    .main-content {
+        margin-top: .3rem;
+    }
+    .header {
+        text-align: center;
+    }
+    .wrap-block {
+        text-align: center;
+    }
+    
+}
